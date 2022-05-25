@@ -1,5 +1,17 @@
 var generateBtn = document.querySelector("#generate");
 
+const myArrayUpper = Array.from(Array(26)).map((e,i) => i + 65);  
+const alphabetUpper = myArrayUpper.map((x) => String.fromCharCode(x));
+
+const myArrayLower = Array.from(Array(26)).map((e,i) => i + 97);
+const alphabetLower = myArrayLower.map((x) => String.fromCharCode(x));
+
+const myArrayNumeric = Array.from(Array(10)).map((e,i) => i + 48);
+const numericArray = myArrayNumeric.map((x) => String.fromCharCode(x));
+
+const myArraySpecial = Array.from(Array(15)).map((e,i) => i + 33);
+const specCharArray = myArraySpecial.map((x) => String.fromCharCode(x));
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -10,22 +22,31 @@ function writePassword() {
 }
 
 function generatePassword() {
+  var results = "";
   var passwordLength = prompt("How long would you like your password to be? (8-128 characters)");
-  var passwordLength = parseInt(passwordLength);
-  if (passwordLength < 8 || passwordLength > 128) {
-    alert("Password must be between 8 and 128 characters");
-    return generatePassword();
+  var charQty = parseInt(passwordLength);
+  if (charQty > 8 || charQty < 128) {
+    var lowerCase = window.confirm("Do you want lowercase letters in your password?");
+    var upperCase = window.confirm("Do you want uppercase letters in your password?");
+    var numeric = window.confirm("Do you want numbers in your password?");
+    var special = window.confirm("Do you want special characters in your password?");
+  } else {
+    window.alert("Invalid entry. Select a length between 8 and 128");
+    return generatePassword;
   }
-  else {
-    return passwordLength;
-  };
+
+  var arrayOfCharacters = [];
+
+  if(lowercase === true) {
+    arrayOfCharacters.push(chooseCharacters());
+  }
 }
 
 function chooseCharacters() {
-  var characterTypes = [];
+  var characterTypesArr = [];
   var characterTypes = prompt("What character types would you like in your password? (lowercase, uppercase, numeric, special)");
   if (characterTypes === "lowercase") {
-    var lowercase = "abcdefghijklmnopqrstuvwxyz";
+    var lowercase = window.confirm("abcdefghijklmnopqrstuvwxyz");
     return lowercase;
   }
   else if (characterTypes === "uppercase") {
