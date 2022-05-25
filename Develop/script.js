@@ -1,5 +1,6 @@
 var generateBtn = document.querySelector("#generate");
 
+// arrays for specific characters
 const myArrayUpper = Array.from(Array(26)).map((e,i) => i + 65);  
 const alphabetUpper = myArrayUpper.map((x) => String.fromCharCode(x));
 
@@ -21,6 +22,7 @@ function writePassword() {
 
 }
 
+// use user prompts to define variables
 function generatePassword() {
   var results = "";
   var passwordLength = prompt("How long would you like your password to be? (8-128 characters)");
@@ -35,6 +37,7 @@ function generatePassword() {
     return generatePassword;
   }
 
+  //empty array to push selected characters into
   var arrayOfCharacters = [];
 
   if(lowerCase === true) {
@@ -50,10 +53,12 @@ function generatePassword() {
     arrayOfCharacters.push(...specialArray);
   }
 
+  //if any are true, then return the results
   if(lowerCase || upperCase || numeric || special) {
     for (var i = 0; i < charQty; i++) {
       results += arrayOfCharacters[Math.floor(Math.random() * arrayOfCharacters.length)];
     }
+    // if none are true, then return generatePassword to start over
   } else {
     window.alert("A minimum of one variable must be selected to generate a password")
     return generatePassword();
