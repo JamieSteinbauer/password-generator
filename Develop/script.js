@@ -10,7 +10,7 @@ const myArrayNumeric = Array.from(Array(10)).map((e,i) => i + 48);
 const numericArray = myArrayNumeric.map((x) => String.fromCharCode(x));
 
 const myArraySpecial = Array.from(Array(15)).map((e,i) => i + 33);
-const specCharArray = myArraySpecial.map((x) => String.fromCharCode(x));
+const specialArray = myArraySpecial.map((x) => String.fromCharCode(x));
 
 // Write password to the #password input
 function writePassword() {
@@ -37,8 +37,26 @@ function generatePassword() {
 
   var arrayOfCharacters = [];
 
-  if(lowercase === true) {
-    arrayOfCharacters.push(chooseCharacters());
+  if(lowerCase === true) {
+    arrayOfCharacters.push(...alphabetUpper);
+  } 
+  if(upperCase === true) {
+    arrayOfCharacters.push(...alphabetLower);
+  }
+  if(numeric === true) {
+    arrayOfCharacters.push(...numericArray);
+  }
+  if(special === true) {
+    arrayOfCharacters.push(...specialArray);
+  }
+
+  if(lowerCase || upperCase || numeric || special) {
+    for (var i = 0; i < charQty; i++) {
+      results += arrayOfCharacters[Math.floor(Math.random() * arrayOfCharacters.length)];
+    }
+  } else {
+    window.alert("A minimum of one variable must be selected to generate a password")
+    return generatePassword();
   }
 }
 
