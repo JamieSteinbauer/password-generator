@@ -38,10 +38,10 @@ function generatePassword() {
   var arrayOfCharacters = [];
 
   if(lowerCase === true) {
-    arrayOfCharacters.push(...alphabetUpper);
+    arrayOfCharacters.push(...alphabetLower);
   } 
   if(upperCase === true) {
-    arrayOfCharacters.push(...alphabetLower);
+    arrayOfCharacters.push(...alphabetUpper);
   }
   if(numeric === true) {
     arrayOfCharacters.push(...numericArray);
@@ -58,32 +58,8 @@ function generatePassword() {
     window.alert("A minimum of one variable must be selected to generate a password")
     return generatePassword();
   }
+  return results;
 }
-
-// function chooseCharacters() {
-//   var characterTypesArr = [];
-//   var characterTypes = prompt("What character types would you like in your password? (lowercase, uppercase, numeric, special)");
-//   if (characterTypes === "lowercase") {
-//     var lowercase = window.confirm("abcdefghijklmnopqrstuvwxyz");
-//     return lowercase;
-//   }
-//   else if (characterTypes === "uppercase") {
-//     var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//     return uppercase;
-//   }
-//   else if (characterTypes === "numeric") {
-//     var numeric = "0123456789";
-//     return numeric;
-//   }
-//   else if (characterTypes === "special") {
-//     var special = "!@#$%^&*()_+";
-//     return special;
-//   }
-//   else {
-//     alert("You must choose at least one character type");
-//     return generatePassword();
-//   }
-// }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
